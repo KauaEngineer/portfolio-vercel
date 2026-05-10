@@ -7,40 +7,19 @@ const skills = [
   {
     category: "Frontend",
     color: "violet",
-    items: [
-      { name: "React", level: 70 },
-      { name: "Next.js", level: 65 },
-      { name: "TypeScript", level: 60 },
-      { name: "HTML & CSS", level: 85 },
-    ],
+    items: ["React", "Next.js", "TypeScript", "HTML & CSS"],
   },
   {
     category: "Styling",
     color: "cyan",
-    items: [
-      { name: "Tailwind CSS", level: 75 },
-      { name: "Framer Motion", level: 55 },
-      { name: "CSS Animations", level: 70 },
-      { name: "Responsive Design", level: 80 },
-    ],
+    items: ["Tailwind CSS", "Framer Motion", "CSS Animations", "Responsive Design"],
   },
   {
     category: "Design",
     color: "pink",
-    items: [
-      { name: "Figma", level: 65 },
-      { name: "UI Design", level: 60 },
-      { name: "Prototipagem", level: 55 },
-      { name: "Design System", level: 50 },
-    ],
+    items: ["Figma", "UI Design", "Prototipagem", "Design System"],
   },
 ];
-
-const colorMap: Record<string, string> = {
-  violet: "bg-violet-500",
-  cyan: "bg-cyan-500",
-  pink: "bg-pink-500",
-};
 
 const borderMap: Record<string, string> = {
   violet: "border-violet-500/30 hover:border-violet-500/60",
@@ -58,6 +37,12 @@ const glowMap: Record<string, string> = {
   violet: "bg-violet-600/10",
   cyan: "bg-cyan-600/10",
   pink: "bg-pink-600/10",
+};
+
+const tagMap: Record<string, string> = {
+  violet: "bg-violet-500/10 border border-violet-500/30 text-violet-300 hover:bg-violet-500/20 hover:border-violet-500/60",
+  cyan: "bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-500/60",
+  pink: "bg-pink-500/10 border border-pink-500/30 text-pink-300 hover:bg-pink-500/20 hover:border-pink-500/60",
 };
 
 function SkillCard({ category, color, items, index }: (typeof skills)[number] & { index: number }) {
@@ -78,22 +63,17 @@ function SkillCard({ category, color, items, index }: (typeof skills)[number] & 
         {category}
       </h3>
 
-      <div className="flex flex-col gap-4">
-        {items.map((skill) => (
-          <div key={skill.name} className="flex flex-col gap-1.5">
-            <div className="flex justify-between items-center">
-              <span className="text-zinc-300 text-sm font-medium">{skill.name}</span>
-              <span className="text-zinc-600 text-xs font-mono">{skill.level}%</span>
-            </div>
-            <div className="h-1 bg-white/5 rounded-full overflow-hidden">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
-                transition={{ duration: 1, delay: index * 0.15 + 0.3, ease: "easeOut" }}
-                className={`h-full rounded-full ${colorMap[color]}`}
-              />
-            </div>
-          </div>
+      <div className="flex flex-wrap gap-2">
+        {items.map((skill, i) => (
+          <motion.span
+            key={skill}
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }}
+            transition={{ duration: 0.3, delay: index * 0.15 + i * 0.07 + 0.2 }}
+            className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors duration-200 cursor-default ${tagMap[color]}`}
+          >
+            {skill}
+          </motion.span>
         ))}
       </div>
     </motion.div>
