@@ -62,7 +62,7 @@ export default function About() {
           variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } } }}
           className="flex flex-col gap-6"
         >
-          <motion.h2 variants={slideRight} className="text-4xl md:text-5xl font-black text-white whitespace-nowrap">
+          <motion.h2 variants={slideRight} className="text-4xl md:text-5xl font-black text-white">
             Código com <span className="gradient-text">propósito</span>.
           </motion.h2>
 

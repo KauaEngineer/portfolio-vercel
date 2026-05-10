@@ -90,20 +90,14 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 2.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex justify-center"
           >
-            <a
-              href="#projects"
+            <button
+              onClick={() => window.scrollBy({ top: window.innerHeight, behavior: "smooth" })}
               className="px-8 py-3 rounded-full bg-white text-black font-medium text-sm transition-all duration-500 hover:bg-white/80 hover:-translate-y-0.5"
             >
               Ver projetos
-            </a>
-            <a
-              href="#about"
-              className="px-8 py-3 rounded-full border border-white/15 hover:border-white/40 text-white/40 hover:text-white/80 font-medium text-sm transition-all duration-500 hover:-translate-y-0.5"
-            >
-              Sobre mim
-            </a>
+            </button>
           </motion.div>
         </motion.div>
       </motion.div>

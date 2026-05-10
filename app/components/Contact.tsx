@@ -62,7 +62,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center gap-4 mb-12"
+          className="flex flex-wrap justify-center gap-4 mb-12"
         >
           {socials.map((social) => (
             <a
