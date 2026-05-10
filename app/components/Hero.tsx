@@ -81,9 +81,9 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 2.2 }}
-            className="text-white/20 text-base max-w-md mx-auto mb-14 leading-relaxed"
+            className="text-white/40 text-base max-w-md mx-auto mb-10 leading-relaxed"
           >
-            Criando interfaces bonitas com código limpo.
+            Cada pixel importa. Cada linha também.
           </motion.p>
 
           <motion.div
@@ -92,12 +92,14 @@ export default function Hero() {
             transition={{ duration: 1, delay: 2.6 }}
             className="flex justify-center"
           >
-            <button
-              onClick={() => window.scrollBy({ top: window.innerHeight, behavior: "smooth" })}
-              className="px-8 py-3 rounded-full bg-white text-black font-medium text-sm transition-all duration-500 hover:bg-white/80 hover:-translate-y-0.5"
-            >
-              Ver projetos
-            </button>
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10">
+              <motion.span
+                animate={{ opacity: [1, 0.3, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="w-2 h-2 rounded-full bg-emerald-400"
+              />
+              <span className="text-emerald-300 text-sm font-medium">Disponível para projetos</span>
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>
