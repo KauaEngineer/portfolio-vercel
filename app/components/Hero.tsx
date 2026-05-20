@@ -27,15 +27,15 @@ export default function Hero() {
       <motion.div style={{ y: textY, opacity: textOpacity }} className="relative z-10 text-center px-6 max-w-5xl">
 
         {/* Name — letter by letter */}
-        <h1 className="text-[clamp(3.5rem,11vw,9rem)] font-bold text-white tracking-tight leading-none mb-4 flex justify-center gap-[0.25em]">
+        <h1 className="text-[clamp(1.75rem,5.5vw,4.5rem)] font-bold text-white tracking-tight leading-none mb-4 flex justify-center gap-[0.25em]">
           <span className="flex">
             {firstName.map((letter, i) => (
               <motion.span
                 key={`first-${i}`}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.1, delay: 0.6 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                style={{ display: "inline-block" }}
+                transition={{ duration: 0.55, delay: 0.25 + i * 0.06, ease: [0.33, 1, 0.68, 1] }}
+                style={{ display: "inline-block", willChange: "transform, opacity", backfaceVisibility: "hidden", WebkitFontSmoothing: "antialiased" }}
               >
                 {letter}
               </motion.span>
@@ -46,19 +46,19 @@ export default function Hero() {
             {lastName.map((letter, i) => (
               <motion.span
                 key={`last-${i}`}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.1, delay: 0.6 + (firstName.length + 1 + i) * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                style={{ display: "inline-block" }}
+                transition={{ duration: 0.55, delay: 0.25 + (firstName.length + 1 + i) * 0.06, ease: [0.33, 1, 0.68, 1] }}
+                style={{ display: "inline-block", willChange: "transform, opacity", backfaceVisibility: "hidden", WebkitFontSmoothing: "antialiased" }}
               >
                 {letter}
               </motion.span>
             ))}
             <motion.span
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.1, delay: 0.6 + allLetters.length * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              style={{ display: "inline-block" }}
+              transition={{ duration: 0.55, delay: 0.25 + allLetters.length * 0.06, ease: [0.33, 1, 0.68, 1] }}
+              style={{ display: "inline-block", willChange: "transform, opacity", backfaceVisibility: "hidden", WebkitFontSmoothing: "antialiased" }}
               className="text-white/40"
             >
               .
@@ -69,9 +69,9 @@ export default function Hero() {
         {/* Subtitle */}
         <motion.div style={{ y: subtitleY }}>
           <motion.p
-            initial={{ opacity: 0, filter: "blur(10px)" }}
+            initial={{ opacity: 0, filter: "blur(8px)" }}
             animate={{ opacity: 1, filter: "blur(0px)" }}
-            transition={{ duration: 1.4, delay: 1.8 }}
+            transition={{ duration: 0.9, delay: 1.1, ease: "easeOut" }}
             className="text-sm text-white/30 font-light tracking-[0.2em] mb-10 uppercase"
           >
             Dev &nbsp;×&nbsp; Designer
@@ -80,16 +80,16 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 2.2 }}
+            transition={{ duration: 0.8, delay: 1.4, ease: "easeOut" }}
             className="text-white/40 text-base max-w-md mx-auto mb-10 leading-relaxed"
           >
             Cada pixel importa. Cada linha também.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 2.6 }}
+            transition={{ duration: 0.7, delay: 1.7, ease: "easeOut" }}
             className="flex justify-center"
           >
             <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10">
@@ -108,7 +108,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 3.5, duration: 1.2 }}
+        transition={{ delay: 2.2, duration: 0.8, ease: "easeOut" }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 pointer-events-none"
       >
         <p className="text-white/30 text-[10px] font-mono tracking-widest uppercase">scroll</p>

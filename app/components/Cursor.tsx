@@ -10,7 +10,7 @@ export default function Cursor() {
   const mouseX = useRef(0);
   const mouseY = useRef(0);
 
-  const springConfig = { damping: 28, stiffness: 200, mass: 0.5 };
+  const springConfig = { damping: 26, stiffness: 450, mass: 0.18 };
   const dotX = useSpring(0, { damping: 50, stiffness: 500, mass: 0.1 });
   const dotY = useSpring(0, { damping: 50, stiffness: 500, mass: 0.1 });
   const ringX = useSpring(0, springConfig);
