@@ -27,13 +27,13 @@ const projects: Project[] = [
     live: "https://travel-planner-ggf3.onrender.com/",
   },
   {
-    title: "Chatbot Portfolio",
+    title: "DocChat",
     description:
       "Chatbot multi-LLM com RAG nos seus documentos. Suba PDFs e markdown e converse com Gemini, Claude e outros provedores, com tool use, streaming e artefatos versionados editáveis.",
     tags: ["Next.js 15", "Vercel AI SDK", "pgvector", "RAG"],
     color: "violet",
     image: "/chatbot-portfolio.png",
-    github: "https://github.com/KauaEngineer/chatbot-portfolio",
+    github: "https://github.com/KauaEngineer/docchat",
   },
 ];
 
@@ -107,13 +107,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         className={`group relative flex flex-col p-6 rounded-2xl border bg-linear-to-b ${accentMap[color]} bg-white/2 transition-colors duration-300`}
       >
         {/* Project screenshot */}
-        <div className="relative w-full h-44 rounded-xl overflow-hidden border border-white/5 mb-6 bg-zinc-950">
+        <div className="relative w-full h-72 rounded-xl overflow-hidden border border-white/5 mb-6 bg-zinc-950">
           <Image
             src={image}
             alt={`Screenshot do projeto ${title}`}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            quality={95}
+            className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
           />
         </div>
 
