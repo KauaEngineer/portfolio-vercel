@@ -50,13 +50,29 @@ export default function RecommendationModal({ onClose }: { onClose: () => void }
           {/* PDF viewer */}
           <div className="flex-1 min-h-0 rounded-lg overflow-hidden border border-white/10 bg-white">
             <iframe
-              src="/carta-recomendacao.pdf#view=FitH"
-              className="w-full h-full min-h-[60vh]"
+              src="/carta-recomendacao.pdf#zoom=page-width"
+              className="w-full h-full min-h-[75vh]"
               title="Carta de recomendação — Ceres Brasil"
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 mt-5">
+          <p className="text-zinc-500 text-xs mt-3 text-center">
+            A assinatura digital fica nítida no PDF original — abre em nova aba ou baixa para conferir.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-3 mt-3">
+            <a
+              href="/carta-recomendacao.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-full border border-violet-500/40 text-violet-300 hover:bg-violet-500/10 hover:border-violet-500/60 text-sm font-medium transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
+                  d="M14 5h5v5M19 5L10 14M5 5h4M5 19h14v-4" />
+              </svg>
+              Abrir em nova aba
+            </a>
             <a
               href="/carta-recomendacao.pdf"
               download="carta-recomendacao-kaua-santos.pdf"
