@@ -1,9 +1,29 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+const letters = [
+  {
+    id: "orbitmind",
+    company: "Orbitmind",
+    role: "Full-Stack Pleno · IA",
+    file: "/carta-recomendacao-orbitmind.pdf",
+    downloadName: "carta-recomendacao-orbitmind-kaua-santos.pdf",
+  },
+  {
+    id: "ceres",
+    company: "Ceres Brasil",
+    role: "Desenvolvedor",
+    file: "/carta-recomendacao.pdf",
+    downloadName: "carta-recomendacao-ceres-kaua-santos.pdf",
+  },
+] as const;
 
 export default function RecommendationModal({ onClose }: { onClose: () => void }) {
+  const [activeId, setActiveId] = useState<typeof letters[number]["id"]>("orbitmind");
+  const active = letters.find((l) => l.id === activeId)!;
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     document.addEventListener("keydown", onKey);
@@ -42,17 +62,39 @@ export default function RecommendationModal({ onClose }: { onClose: () => void }
           </button>
 
           {/* Header */}
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-px bg-violet-500" />
-            <p className="text-violet-400 text-xs font-mono tracking-widest uppercase">Carta de Recomendação</p>
+            <p className="text-violet-400 text-xs font-mono tracking-widest uppercase">Cartas de Recomendação</p>
+          </div>
+
+          {/* Tabs */}
+          <div className="flex gap-2 mb-4">
+            {letters.map((l) => {
+              const isActive = l.id === activeId;
+              return (
+                <button
+                  key={l.id}
+                  onClick={() => setActiveId(l.id)}
+                  className={`flex-1 sm:flex-none px-4 py-2 rounded-full border text-sm transition-colors ${
+                    isActive
+                      ? "border-violet-500/60 bg-violet-500/10 text-violet-200"
+                      : "border-white/10 text-zinc-400 hover:text-white hover:border-white/30"
+                  }`}
+                >
+                  <span className="font-medium">{l.company}</span>
+                  <span className="hidden sm:inline text-zinc-500 ml-2">· {l.role}</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* PDF viewer */}
           <div className="flex-1 min-h-0 rounded-lg overflow-hidden border border-white/10 bg-white">
             <iframe
-              src="/carta-recomendacao.pdf#zoom=page-width"
+              key={active.id}
+              src={`${active.file}#zoom=page-width`}
               className="w-full h-full min-h-[75vh]"
-              title="Carta de recomendação — Ceres Brasil"
+              title={`Carta de recomendação — ${active.company}`}
             />
           </div>
 
@@ -62,7 +104,7 @@ export default function RecommendationModal({ onClose }: { onClose: () => void }
 
           <div className="flex flex-col sm:flex-row gap-3 mt-3">
             <a
-              href="/carta-recomendacao.pdf"
+              href={active.file}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-full border border-violet-500/40 text-violet-300 hover:bg-violet-500/10 hover:border-violet-500/60 text-sm font-medium transition-colors"
@@ -74,8 +116,8 @@ export default function RecommendationModal({ onClose }: { onClose: () => void }
               Abrir em nova aba
             </a>
             <a
-              href="/carta-recomendacao.pdf"
-              download="carta-recomendacao-kaua-santos.pdf"
+              href={active.file}
+              download={active.downloadName}
               className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-full bg-violet-500 hover:bg-violet-400 text-white text-sm font-medium transition-colors"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
