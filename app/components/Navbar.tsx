@@ -6,6 +6,7 @@ import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 const links = [
   { label: "Início", href: "#hero" },
   { label: "Sobre", href: "#about" },
+  { label: "Experiência", href: "#experience" },
   { label: "Skills", href: "#skills" },
   { label: "Projetos", href: "#projects" },
   { label: "Contato", href: "#contact" },

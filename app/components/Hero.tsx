@@ -71,25 +71,25 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, filter: "blur(8px)" }}
             animate={{ opacity: 1, filter: "blur(0px)" }}
-            transition={{ duration: 0.9, delay: 1.1, ease: "easeOut" }}
-            className="text-sm text-white/30 font-light tracking-[0.2em] mb-10 uppercase"
+            transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
+            className="text-sm text-white/30 font-light tracking-[0.2em] mb-8 uppercase"
           >
-            Dev &nbsp;×&nbsp; Designer
+            Full-Stack &nbsp;·&nbsp; IA
           </motion.p>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.4, ease: "easeOut" }}
-            className="text-white/40 text-base max-w-md mx-auto mb-10 leading-relaxed"
+            transition={{ duration: 0.6, delay: 0.9, ease: "easeOut" }}
+            className="text-white/50 text-base max-w-lg mx-auto mb-10 leading-relaxed"
           >
-            Cada pixel importa. Cada linha também.
+            Construindo plataformas com LLMs, RAG e agentes em produção.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.7, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 1.1, ease: "easeOut" }}
             className="flex justify-center"
           >
             <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10">
@@ -108,7 +108,7 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.2, duration: 0.8, ease: "easeOut" }}
+        transition={{ delay: 1.5, duration: 0.6, ease: "easeOut" }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 pointer-events-none"
       >
         <p className="text-white/30 text-[10px] font-mono tracking-widest uppercase">scroll</p>

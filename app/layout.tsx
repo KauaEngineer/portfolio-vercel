@@ -57,7 +57,7 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col cursor-none">
+      <body className="min-h-full flex flex-col">
         <StarField />
         <Cursor />
         {children}

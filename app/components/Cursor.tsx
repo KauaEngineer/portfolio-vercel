@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useSpring } from "framer-motion";
 
 export default function Cursor() {
+  const [active, setActive] = useState(false);
   const [visible, setVisible] = useState(false);
   const [hovered, setHovered] = useState(false);
 
@@ -17,6 +18,13 @@ export default function Cursor() {
   const ringY = useSpring(0, springConfig);
 
   useEffect(() => {
+    const fineMouse = window.matchMedia("(pointer: fine)").matches;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!fineMouse || reducedMotion) return;
+
+    setActive(true);
+    document.body.classList.add("cursor-none");
+
     const onMove = (e: MouseEvent) => {
       mouseX.current = e.clientX;
       mouseY.current = e.clientY;
@@ -49,16 +57,17 @@ export default function Cursor() {
       document.removeEventListener("mouseleave", onLeave);
       document.removeEventListener("mouseover", onHoverStart);
       document.removeEventListener("mouseout", onHoverEnd);
+      document.body.classList.remove("cursor-none");
     };
   }, [dotX, dotY, ringX, ringY]);
 
-  if (typeof window === "undefined") return null;
+  if (!active) return null;
 
   return (
     <>
       {/* Dot — preciso */}
       <motion.div
-        className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference"
+        className="fixed top-0 left-0 z-9999 pointer-events-none mix-blend-difference"
         style={{ x: dotX, y: dotY, translateX: "-50%", translateY: "-50%" }}
         animate={{ opacity: visible ? 1 : 0, scale: hovered ? 0 : 1 }}
         transition={{ opacity: { duration: 0.2 } }}
@@ -68,7 +77,7 @@ export default function Cursor() {
 
       {/* Ring — com delay spring */}
       <motion.div
-        className="fixed top-0 left-0 z-[9998] pointer-events-none mix-blend-difference"
+        className="fixed top-0 left-0 z-9998 pointer-events-none mix-blend-difference"
         style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
         animate={{
           opacity: visible ? 1 : 0,

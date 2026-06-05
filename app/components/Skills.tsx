@@ -7,17 +7,17 @@ const skills = [
   {
     category: "Frontend",
     color: "violet",
-    items: ["React", "Next.js", "TypeScript", "HTML & CSS"],
+    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
   },
   {
-    category: "Styling",
+    category: "Backend",
     color: "cyan",
-    items: ["Tailwind CSS", "Framer Motion", "CSS Animations", "Responsive Design"],
+    items: ["Node.js", "NestJS", "PostgreSQL", "REST APIs", "Docker"],
   },
   {
-    category: "Design",
+    category: "IA Aplicada",
     color: "pink",
-    items: ["Figma", "UI Design", "Prototipagem", "Design System"],
+    items: ["Vercel AI SDK", "RAG", "pgvector", "Embeddings", "LLM Integration"],
   },
 ];
 
