@@ -36,6 +36,16 @@ const projects: Project[] = [
     github: "https://github.com/KauaEngineer/docchat",
   },
   {
+    title: "QueueOS",
+    description:
+      "Sistema de filas e jobs assíncronos self-hosted com dashboard em tempo real. Multi-tenancy via header, cron jobs, retries por fila, alertas via webhook, métricas Prometheus e manifestos Kubernetes prontos. Processa email, geração de PDF, imagens e notifications com concorrência configurável por worker.",
+    tags: ["Node.js", "BullMQ", "Redis", "Prometheus"],
+    color: "cyan",
+    image: "/queueos.png",
+    github: "https://github.com/KauaEngineer/queueos",
+    live: "https://queueos-owj8.onrender.com",
+  },
+  {
     title: "Travel Planner",
     description:
       "Roteiros de viagem personalizados com IA: orçamento detalhado, hospedagem e gastronomia, com imagens reais via Wikidata + Pexels. Desenhado com modelo de afiliados (Booking, Skyscanner) pra escalar comercialmente.",
