@@ -130,9 +130,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       initial={{ opacity: 0, y: 50 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+      className="h-full"
     >
       <TiltCard
-        className={`group relative flex flex-col p-6 rounded-2xl border bg-linear-to-b ${accentMap[color]} bg-white/2 transition-colors duration-300`}
+        className={`group relative flex flex-col h-full p-6 rounded-2xl border bg-linear-to-b ${accentMap[color]} bg-white/2 transition-colors duration-300`}
       >
         {/* Project screenshot */}
         <div className="relative w-full h-72 rounded-xl overflow-hidden border border-white/5 mb-6 bg-zinc-950">
