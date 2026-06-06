@@ -9,13 +9,32 @@ type Project = {
   title: string;
   description: string;
   tags: string[];
-  color: "violet" | "amber";
+  color: "rose" | "violet" | "cyan" | "amber";
   image: string;
   github: string;
   live?: string;
 };
 
 const projects: Project[] = [
+  {
+    title: "Ceres Brasil",
+    description:
+      "E-commerce institucional B2C + B2B no mesmo código. Gate de aprovação pra revendedores PJ (preços de revenda só aparecem após validação no servidor + Row Level Security no Postgres). Checkout multi-etapas com cálculo de frete via CEP, painel admin com aprovação de PJ por documentos, e contas de demonstração públicas pra cliente, revendedor e admin.",
+    tags: ["Next.js 16", "Supabase", "RLS", "TypeScript"],
+    color: "rose",
+    image: "/ceres-brasil.png",
+    github: "https://github.com/KauaEngineer/ceres-brasil",
+    live: "https://ceres-brasil.vercel.app",
+  },
+  {
+    title: "DocChat",
+    description:
+      "Chatbot multi-LLM com RAG nos seus documentos. Suba PDFs e markdown e converse com Gemini, Claude e outros provedores, com tool use, streaming e artefatos versionados editáveis.",
+    tags: ["Next.js 15", "Vercel AI SDK", "pgvector", "RAG"],
+    color: "violet",
+    image: "/docchat.png",
+    github: "https://github.com/KauaEngineer/docchat",
+  },
   {
     title: "Travel Planner",
     description:
@@ -26,34 +45,33 @@ const projects: Project[] = [
     github: "https://github.com/KauaEngineer/travel-planner",
     live: "https://travel-planner-ggf3.onrender.com/",
   },
-  {
-    title: "DocChat",
-    description:
-      "Chatbot multi-LLM com RAG nos seus documentos. Suba PDFs e markdown e converse com Gemini, Claude e outros provedores, com tool use, streaming e artefatos versionados editáveis.",
-    tags: ["Next.js 15", "Vercel AI SDK", "pgvector", "RAG"],
-    color: "violet",
-    image: "/chatbot-portfolio.png",
-    github: "https://github.com/KauaEngineer/docchat",
-  },
 ];
 
 const accentMap: Record<Project["color"], string> = {
+  rose: "from-rose-600/20 to-transparent border-rose-500/30 hover:border-rose-500/60",
   violet: "from-violet-600/20 to-transparent border-violet-500/30 hover:border-violet-500/60",
+  cyan: "from-cyan-600/20 to-transparent border-cyan-500/30 hover:border-cyan-500/60",
   amber: "from-amber-600/20 to-transparent border-amber-500/30 hover:border-amber-500/60",
 };
 
 const tagMap: Record<Project["color"], string> = {
+  rose: "border-rose-500/30 text-rose-300 bg-rose-500/5",
   violet: "border-violet-500/30 text-violet-300 bg-violet-500/5",
+  cyan: "border-cyan-500/30 text-cyan-300 bg-cyan-500/5",
   amber: "border-amber-500/30 text-amber-300 bg-amber-500/5",
 };
 
 const dotMap: Record<Project["color"], string> = {
+  rose: "bg-rose-400",
   violet: "bg-violet-400",
+  cyan: "bg-cyan-400",
   amber: "bg-amber-400",
 };
 
 const buttonMap: Record<Project["color"], string> = {
+  rose: "bg-rose-500 hover:bg-rose-400 text-white",
   violet: "bg-violet-500 hover:bg-violet-400 text-white",
+  cyan: "bg-cyan-500 hover:bg-cyan-400 text-black",
   amber: "bg-amber-500 hover:bg-amber-400 text-black",
 };
 
@@ -63,7 +81,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-24 relative">
-      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-transparent to-cyan-500/30" />
+      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-px h-32 bg-linear-to-b from-transparent to-cyan-500/30" />
 
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
