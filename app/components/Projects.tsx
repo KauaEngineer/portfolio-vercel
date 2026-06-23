@@ -9,13 +9,23 @@ type Project = {
   title: string;
   description: string;
   tags: string[];
-  color: "rose" | "violet" | "cyan" | "amber";
+  color: "rose" | "violet" | "cyan" | "amber" | "emerald";
   image: string;
   github: string;
   live?: string;
 };
 
 const projects: Project[] = [
+  {
+    title: "AgentDesk",
+    description:
+      "Plataforma de orquestração de squads de agentes IA via chat. Architect cria pipelines com veto conditions (LLM valida qualidade), review loops e checkpoints humanos. State Machine em tempo real via WebSocket, escritório virtual 3D com visualização dos agentes trabalhando, 24 tabelas Drizzle, multi-provider LLM (Anthropic + OpenAI + Google) via Vercel AI Gateway. Monorepo Turborepo com 62 testes Vitest.",
+    tags: ["Next.js 15", "Drizzle", "WebSocket", "React Three Fiber"],
+    color: "violet",
+    image: "/agentdesk.png",
+    github: "https://github.com/KauaEngineer/agentdesk-platform",
+    live: "https://agentdesk-platform-web.vercel.app",
+  },
   {
     title: "Ceres Brasil",
     description:
@@ -31,7 +41,7 @@ const projects: Project[] = [
     description:
       "Chatbot multi-LLM com RAG nos seus documentos. Suba PDFs e markdown e converse com Gemini, Claude e outros provedores, com tool use, streaming e artefatos versionados editáveis.",
     tags: ["Next.js 15", "Vercel AI SDK", "pgvector", "RAG"],
-    color: "violet",
+    color: "emerald",
     image: "/docchat.png",
     github: "https://github.com/KauaEngineer/docchat",
   },
@@ -62,6 +72,7 @@ const accentMap: Record<Project["color"], string> = {
   violet: "from-violet-600/20 to-transparent border-violet-500/30 hover:border-violet-500/60",
   cyan: "from-cyan-600/20 to-transparent border-cyan-500/30 hover:border-cyan-500/60",
   amber: "from-amber-600/20 to-transparent border-amber-500/30 hover:border-amber-500/60",
+  emerald: "from-emerald-600/20 to-transparent border-emerald-500/30 hover:border-emerald-500/60",
 };
 
 const tagMap: Record<Project["color"], string> = {
@@ -69,6 +80,7 @@ const tagMap: Record<Project["color"], string> = {
   violet: "border-violet-500/30 text-violet-300 bg-violet-500/5",
   cyan: "border-cyan-500/30 text-cyan-300 bg-cyan-500/5",
   amber: "border-amber-500/30 text-amber-300 bg-amber-500/5",
+  emerald: "border-emerald-500/30 text-emerald-300 bg-emerald-500/5",
 };
 
 const dotMap: Record<Project["color"], string> = {
@@ -76,6 +88,7 @@ const dotMap: Record<Project["color"], string> = {
   violet: "bg-violet-400",
   cyan: "bg-cyan-400",
   amber: "bg-amber-400",
+  emerald: "bg-emerald-400",
 };
 
 const buttonMap: Record<Project["color"], string> = {
@@ -83,6 +96,7 @@ const buttonMap: Record<Project["color"], string> = {
   violet: "bg-violet-500 hover:bg-violet-400 text-white",
   cyan: "bg-cyan-500 hover:bg-cyan-400 text-black",
   amber: "bg-amber-500 hover:bg-amber-400 text-black",
+  emerald: "bg-emerald-500 hover:bg-emerald-400 text-white",
 };
 
 export default function Projects() {
@@ -109,7 +123,7 @@ export default function Projects() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, i) => (
             <ProjectCard key={project.title} project={project} index={i} />
           ))}
@@ -136,7 +150,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         className={`group relative flex flex-col h-full p-6 rounded-2xl border bg-linear-to-b ${accentMap[color]} bg-white/2 transition-colors duration-300`}
       >
         {/* Project screenshot */}
-        <div className="relative w-full h-72 rounded-xl overflow-hidden border border-white/5 mb-6 bg-zinc-950">
+        <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-white/5 mb-6 bg-zinc-950">
           <Image
             src={image}
             alt={`Screenshot do projeto ${title}`}
