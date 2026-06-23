@@ -9,7 +9,7 @@ type Project = {
   title: string;
   description: string;
   tags: string[];
-  color: "rose" | "violet" | "cyan" | "amber" | "emerald";
+  color: "rose" | "violet" | "cyan" | "amber" | "emerald" | "sky";
   image: string;
   github: string;
   live?: string;
@@ -25,6 +25,16 @@ const projects: Project[] = [
     image: "/agentdesk.png",
     github: "https://github.com/KauaEngineer/agentdesk-platform",
     live: "https://agentdesk-platform-web.vercel.app",
+  },
+  {
+    title: "Sentinel",
+    description:
+      "Plataforma de monitoramento de serviços event-driven. Health checks publicam eventos no Kafka; consumers independentes persistem no PostgreSQL e disparam alertas por padrões de falhas consecutivas. Empacotado com mock services para demonstração, Docker Compose para dev, manifests Kubernetes (HPA, Kustomize) e Terraform para deploy em AWS (EKS, RDS, S3, ECR).",
+    tags: ["FastAPI", "Kafka", "Kubernetes", "Terraform"],
+    color: "sky",
+    image: "/sentinel.png",
+    github: "https://github.com/KauaEngineer/sentinel",
+    live: "https://sentinel-olive-psi.vercel.app",
   },
   {
     title: "Ceres Brasil",
@@ -73,6 +83,7 @@ const accentMap: Record<Project["color"], string> = {
   cyan: "from-cyan-600/20 to-transparent border-cyan-500/30 hover:border-cyan-500/60",
   amber: "from-amber-600/20 to-transparent border-amber-500/30 hover:border-amber-500/60",
   emerald: "from-emerald-600/20 to-transparent border-emerald-500/30 hover:border-emerald-500/60",
+  sky: "from-sky-600/20 to-transparent border-sky-500/30 hover:border-sky-500/60",
 };
 
 const tagMap: Record<Project["color"], string> = {
@@ -81,6 +92,7 @@ const tagMap: Record<Project["color"], string> = {
   cyan: "border-cyan-500/30 text-cyan-300 bg-cyan-500/5",
   amber: "border-amber-500/30 text-amber-300 bg-amber-500/5",
   emerald: "border-emerald-500/30 text-emerald-300 bg-emerald-500/5",
+  sky: "border-sky-500/30 text-sky-300 bg-sky-500/5",
 };
 
 const dotMap: Record<Project["color"], string> = {
@@ -89,6 +101,7 @@ const dotMap: Record<Project["color"], string> = {
   cyan: "bg-cyan-400",
   amber: "bg-amber-400",
   emerald: "bg-emerald-400",
+  sky: "bg-sky-400",
 };
 
 const buttonMap: Record<Project["color"], string> = {
@@ -97,6 +110,7 @@ const buttonMap: Record<Project["color"], string> = {
   cyan: "bg-cyan-500 hover:bg-cyan-400 text-black",
   amber: "bg-amber-500 hover:bg-amber-400 text-black",
   emerald: "bg-emerald-500 hover:bg-emerald-400 text-white",
+  sky: "bg-sky-500 hover:bg-sky-400 text-white",
 };
 
 export default function Projects() {
